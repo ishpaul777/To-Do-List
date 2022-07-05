@@ -1,0 +1,143 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Josefin Sans", sans-serif;
+  color: hsl(235, 19%, 35%);
+}
+
+body {
+  background: hsl(236, 33%, 92%) url(./assets/bg-desktop-light.jpg);
+  background-repeat: no-repeat;
+  background-size: 100vw 36vh;
+}
+
+main {
+  margin: 10vh auto;
+  width: 30vw;
+}
+
+.heading {
+  color: #fff;
+  font-size: 38px;
+  margin-bottom: 35px;
+}
+
+.alert.invalid,
+.bi-x-circle {
+  color: red;
+  font-size: 10px;
+}
+
+.alert.success {
+  background:
+    url("assets/icon-check.svg"),
+    linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+}
+
+.field-input-to-do {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: hsl(0, 0%, 98%);
+  width: 100%;
+  border-radius: 5px;
+}
+
+.input-to-do {
+  width: 70%;
+  height: 60px;
+  padding: 15px;
+  font-size: 18px;
+  outline: 0;
+  border: 0;
+}
+
+.submit-btn {
+  width: 5%;
+  padding-right: 10px;
+  border: 0;
+  background: hsl(0, 0%, 98%);
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.tasks {
+  list-style: none;
+  background: hsl(0, 0%, 98%);
+  border-radius: 5px;
+  -webkit-box-shadow: 7px 21px 47px -28px rgba(57, 58, 76, 1);
+  -moz-box-shadow: 7px 21px 47px -28px rgba(57, 58, 76, 1);
+  box-shadow: 7px 21px 47px -28px rgba(57, 58, 76, 1);
+}
+
+.task {
+  padding: 15px;
+  border-bottom: 1px solid rgb(200, 200, 213);
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.task-field {
+  font-size: 18px;
+  display: flex;
+  gap: 15px;
+  padding: 5px;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  border: 1px solid hsl(234, 11%, 52%);
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+  background:
+    url("assets/icon-check.svg"),
+    linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+}
+
+input[type="checkbox"]:checked ~ label {
+  text-decoration: line-through;
+  color: hsl(234, 11%, 52%);
+}
+
+.task-description {
+  outline: 0;
+  border: 0;
+}
+
+.remove-btn {
+  font-size: 22px;
+  cursor: pointer;
+}
+
+footer {
+  width: 100%;
+  background: hsl(0, 0%, 98%);
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+.clear-completed {
+  text-decoration: none;
+}
