@@ -14,7 +14,7 @@ body {
 
 main {
   margin: 10vh auto;
-  width: 30vw;
+  width: 85vw;
 }
 
 .heading {
@@ -86,7 +86,11 @@ main {
   gap: 20px;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+}
+
+.task.active {
+  border: 2px solid rgb(103, 103, 103);
+  border-radius: 3px;
 }
 
 .task-field {
@@ -123,11 +127,28 @@ input[type="checkbox"]:checked ~ label {
 .task-description {
   outline: 0;
   border: 0;
+  max-width: 45vw;
+}
+
+.update-btn {
+  font-size: 22px;
+  cursor: pointer;
+  display: none;
+}
+
+.user-interaction {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.edit-btn,
+.remove-btn {
+  cursor: pointer;
 }
 
 .remove-btn {
   font-size: 22px;
-  cursor: pointer;
 }
 
 footer {
@@ -140,4 +161,14 @@ footer {
 
 .clear-completed {
   text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  main {
+    width: 30vw;
+  }
+
+  .task-description {
+    max-width: 15vw;
+  }
 }
