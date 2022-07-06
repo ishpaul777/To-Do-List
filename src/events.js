@@ -62,48 +62,48 @@ document.querySelector('.clear-completed').addEventListener('click', () => {
 // Load tasks
 UI.displayTasks();
 
-  //after content is loaded check loacal storage if there is any completed task
-  document.querySelectorAll('input[type="checkbox"]').forEach((box) => {
-    const tasks = Store.getTasks();
-    const taskList = document.querySelectorAll(".task");
-    let nodes = Array.prototype.slice.call(taskList); //convert list in array
-  for (let i = 0; i < tasks.length; i+= 1) {
-    //iterate over tasks to find completed tasks
-    let task = tasks[i].completed;
+// after content is loaded check loacal storage if there is any completed task
+document.querySelectorAll('input[type="checkbox"]').forEach((box) => {
+  const tasks = Store.getTasks();
+  const taskList = document.querySelectorAll('.task');
+  const nodes = Array.prototype.slice.call(taskList); // convert list in array
+  for (let i = 0; i < tasks.length; i += 1) {
+    // iterate over tasks to find completed tasks
+    const task = tasks[i].completed;
     if (tasks[i].index === nodes.indexOf(box.parentElement.parentElement)) {
-      //condition if
+      // condition if
       if (task) {
-        //if task is completed
-        box.setAttribute("checked", ""); //fill the check
+        // if task is completed
+        box.setAttribute('checked', ''); // fill the check
       }
-      localStorage.setItem("tasks", JSON.stringify(tasks)); //update storage
+      localStorage.setItem('tasks', JSON.stringify(tasks)); // update storage
     }
   }
 
   // Event: update storage when a task is completed
   document.querySelectorAll('input[type="checkbox"]').forEach((box) => {
     const tasks = Store.getTasks();
-    const taskList = document.querySelectorAll(".task");
-    box.addEventListener("change", () => {
-      //same on when user take action conditions are opposite
-      let nodes = Array.prototype.slice.call(taskList);
-      for (let i = 0; i < tasks.length; i+= 1) {
-        let completed = tasks[i].completed;
+    const taskList = document.querySelectorAll('.task');
+    box.addEventListener('change', () => {
+      // same on when user take action conditions are opposite
+      const nodes = Array.prototype.slice.call(taskList);
+      for (let i = 0; i < tasks.length; i += 1) {
+        const { completed } = tasks[i];
         if (tasks[i].index === nodes.indexOf(box.parentElement.parentElement)) {
           if (completed) {
-            box.removeAttribute("checked");
+            box.removeAttribute('checked');
             tasks[i].completed = false;
           }
           if (!completed) {
-            box.setAttribute("checked", "");
+            box.setAttribute('checked', '');
             tasks[i].completed = true;
           }
         }
       }
-      localStorage.setItem("tasks", JSON.stringify(tasks));
+      localStorage.setItem('tasks', JSON.stringify(tasks));
 
-//for reloading and updating everytime a task is completed //! Any better way?
-     document.location.reload(true);
+      // for reloading and updating everytime a task is completed //! Any better way?
+      document.location.reload(true);
     });
   });
 });
