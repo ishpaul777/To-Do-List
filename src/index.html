@@ -14,11 +14,11 @@
     />
     <title>To Do List</title>
   </head>
-  <body>
+  <body class="">
     <main  class="wrapper">
-      <h1 class="heading">Today's To Do</h1>
+      <h1 class="heading">TO DO</h1>
       <form class="field-input-to-do">
-        <input type="text" class="input-to-do" placeholder="What to do?" />
+        <input type="text" class="input-to-do" placeholder="What to do?"/>
         <button type="submit" class="submit-btn">
           <i class="bi bi-plus"></i>
         </button>
@@ -26,10 +26,22 @@
       <ul class="tasks">
         
       </ul>
-      <footer>
-        <a href="#" class="clear-completed">Clear Completed</a>
-      </footer>
+      <ul class="ul-foot">
+          <li class="tasks-left">
+              <span class="tasks-left-num"></span> tasks remaining 
+          </li>
+          <li>
+            <input type="checkbox" class="mode-toggler" id="checkbox">
+        <label for="checkbox" class="toggler-label">
+            <i class="bi bi-sun-fill"></i>
+            <i class="bi bi-moon"></i>
+            <span class="ball"></span>
+        </label>
+          </li>
+          <li>
+              <a href="#" class="clear-completed">Clear Completed</a>
+            </li>
+        </ul>
     </main>
-
   </body>
 </html>

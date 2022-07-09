@@ -27,6 +27,7 @@ export class Store {
     const tasks = Store.getTasks(); // get tasks
     tasks.push(task); // add new task
     localStorage.setItem('tasks', JSON.stringify(tasks)); // convert them in string
+    document.querySelector('.tasks-left-num').textContent = tasks.length;
   }
 
   // remove a task from store
@@ -46,6 +47,27 @@ export class Store {
         }
       }
       localStorage.setItem('tasks', JSON.stringify(tasks));
+      document.querySelector('.tasks-left-num').textContent = tasks.length;
+    }
+  }
+
+  // update status when user checks the checkbox
+  static updateCompletionStatus(el) {
+    const checkbox = el;
+    const taskList = document.querySelector('.tasks');
+    const tasks = Store.getTasks();
+    const nodes = Array.prototype.slice.call(taskList.children);
+    for (let i = 0; i < tasks.length; i += 1) {
+      if (
+        tasks[i].index === nodes.indexOf(checkbox.parentElement.parentElement)
+      ) {
+        if (!tasks[i].completed) {
+          tasks[i].completed = true;
+        } else if (tasks[i].completed) {
+          tasks[i].completed = false;
+        }
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+      }
     }
   }
 
@@ -74,7 +96,10 @@ export class Store {
     const nodes = Array.prototype.slice.call(taskList.children); // convert list in array
     for (let i = 0; i < tasks.length; i += 1) {
       // iterate over tasks to find completed tasks
-      if (tasks[i].index === nodes.indexOf(description.parentElement.parentElement)) {
+      if (
+        tasks[i].index
+        === nodes.indexOf(description.parentElement.parentElement)
+      ) {
         if (description.textContent !== tasks[i].description) {
           tasks[i].description = description.textContent;
         }
@@ -101,7 +126,7 @@ export class UI {
 
     row.innerHTML = `
         <div class="task-field">
-            <input type="checkbox" name="" class="task-checkbox" />
+            <input type="checkbox" class="task-checkbox" />
             <label class="task-description">${task.description}</label>
         </div>
         <div class="user-interaction">
@@ -144,8 +169,8 @@ export class UI {
 
     // to select the text that is editable
     const selectText = (ele) => {
-      let sel; let
-        range;
+      let sel;
+      let range;
       // get element id
       if (window.getSelection && document.createRange) {
         // Browser compatibility
@@ -199,3 +224,5 @@ export class UI {
     });
   }
 }
+
+document.querySelector('.tasks-left-num').textContent = Store.getTasks().length;

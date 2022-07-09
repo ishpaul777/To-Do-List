@@ -3,7 +3,6 @@ import { Task, Store, UI } from './add_remove_update.js';
 // Event: Add task To list
 document.querySelector('.field-input-to-do').addEventListener('submit', (e) => {
   e.preventDefault();
-
   const tasks = Store.getTasks();
 
   // get input values
@@ -28,12 +27,14 @@ document.querySelector('.field-input-to-do').addEventListener('submit', (e) => {
     UI.showAlert(' ', 'success');
     // clear input field
     document.querySelector('.input-to-do').value = '';
-    document.location.reload(true); // for reloading when item is added
+    // document.location.reload(true); // for reloading when item is added
   }
 });
 
+const taskList = document.querySelector('.tasks');
+
 // Event: Remove a Task
-document.querySelector('.tasks').addEventListener('click', (e) => {
+taskList.addEventListener('click', (e) => {
   if (e.target.classList.contains('remove')) {
     // remove from UI
     UI.removeTask(e.target);
@@ -41,13 +42,12 @@ document.querySelector('.tasks').addEventListener('click', (e) => {
     const description = e.target.parentElement.parentElement.children[0].children[1].textContent;
     Store.removeTask(e.target, description);
   }
-});
-
-// event: Update a task
-const taskList = document.querySelector('.tasks');
-taskList.addEventListener('click', (e) => {
+  // event: Update a task
   if (e.target.classList.contains('edit-btn')) {
     UI.updateTask(e.target);
+  }
+  if (e.target.classList.contains('task-checkbox')) {
+    Store.updateCompletionStatus(e.target);
   }
 });
 
@@ -56,8 +56,10 @@ taskList.addEventListener('click', (e) => {
 document.querySelector('.clear-completed').addEventListener('click', () => {
   // clear from loacal storage
   Store.clearCompleted();
+  // TODO> CHANGE THIS TO SOMTHING THAT DO NOT RELOAD AND STILL CLEAR THE UI
   document.location.reload(true); // for reloading after clearing s completed items
-});
+} 
+);
 
 // Load tasks
 UI.displayTasks();
@@ -79,31 +81,32 @@ document.querySelectorAll('input[type="checkbox"]').forEach((box) => {
       localStorage.setItem('tasks', JSON.stringify(tasks)); // update storage
     }
   }
-
-  // Event: update storage when a task is completed
-  document.querySelectorAll('input[type="checkbox"]').forEach((box) => {
-    const tasks = Store.getTasks();
-    const taskList = document.querySelectorAll('.task');
-    box.addEventListener('change', () => {
-      // same on when user take action conditions are opposite
-      const nodes = Array.prototype.slice.call(taskList);
-      for (let i = 0; i < tasks.length; i += 1) {
-        const { completed } = tasks[i];
-        if (tasks[i].index === nodes.indexOf(box.parentElement.parentElement)) {
-          if (completed) {
-            box.removeAttribute('checked');
-            tasks[i].completed = false;
-          }
-          if (!completed) {
-            box.setAttribute('checked', '');
-            tasks[i].completed = true;
-          }
-        }
-      }
-      localStorage.setItem('tasks', JSON.stringify(tasks));
-
-      // for reloading and updating everytime a task is completed //! Any better way?
-      document.location.reload(true);
-    });
-  });
 });
+
+
+const toggler = document.querySelector(".mode-toggler")
+toggler.addEventListener("change", () => {
+  document.body.classList.toggle("dark")
+  document.querySelector(".ball").classList.toggle("active")
+  if(localStorage.getItem('darkMode') === null){
+    localStorage.setItem('darkMode', 'true')
+  }
+  else if(localStorage.getItem('darkMode') === 'false'){
+    localStorage.setItem('darkMode', 'true')
+  }
+  else if(localStorage.getItem('darkMode') === 'true'){
+    localStorage.setItem('darkMode', 'false')
+  }
+})
+
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  if(localStorage.getItem('darkMode') === 'true'){
+    document.body.classList.add("dark")
+    document.querySelector(".ball").classList.add("active")
+  }
+  if(localStorage.getItem('darkMode') === 'false'){
+    document.body.classList.remove("dark")
+    document.querySelector(".ball").classList.remove("active")
+  }
+})
