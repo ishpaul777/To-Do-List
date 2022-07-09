@@ -12,9 +12,9 @@
 - Javascript
 - Webpack
 
-## Live Demo (Available soon)
+## Live Demo 
 
-[Live Demo Link](https://ishpaul777.github.io/To-Do-List/)
+To Do app is [live](https://ishpaul777.github.io/To-Do-List/)
 
 
 ## Getting Started
