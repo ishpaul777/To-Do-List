@@ -123,6 +123,8 @@ export class UI {
 
     const row = document.createElement('li');
     row.classList.add('task');
+    row.classList.add('draggable');
+    row.setAttribute('draggable', 'true');
 
     row.innerHTML = `
         <div class="task-field">

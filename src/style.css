@@ -120,13 +120,17 @@ body.dark .submit-btn .bi {
      box-shadow: 7px 21px 47px -28px var(--VeryDarkGrayishBlue);
 }
 
+body.dark .tasks {
+    background: var(--VeryDarkDesaturatedBlue);
+}
+
 body.dark .task {
     background: var(--VeryDarkDesaturatedBlue);
 }
 
 .task {
-    padding: 15px;
-    border-bottom: 1px solid rgb(200, 200, 213);
+  padding: 15px;
+  border-bottom: 1px solid rgb(200, 200, 213);
   display: flex;
   gap: 20px;
   align-items: center;
@@ -135,7 +139,9 @@ body.dark .task {
 body.dark .task {
     border-bottom: 1px solid var(--VeryDarkGrayishBlue);
 }
-
+.draggable.dragging {
+  opacity: .5;
+}
 .task.active {
   border: 2px solid rgb(103, 103, 103);
   border-radius: 3px;

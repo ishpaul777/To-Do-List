@@ -58,8 +58,7 @@ document.querySelector('.clear-completed').addEventListener('click', () => {
   Store.clearCompleted();
   // TODO> CHANGE THIS TO SOMTHING THAT DO NOT RELOAD AND STILL CLEAR THE UI
   document.location.reload(true); // for reloading after clearing s completed items
-} 
-);
+});
 
 // Load tasks
 UI.displayTasks();
@@ -83,30 +82,61 @@ document.querySelectorAll('input[type="checkbox"]').forEach((box) => {
   }
 });
 
+const toggler = document.querySelector('.mode-toggler');
+toggler.addEventListener('change', () => {
+  document.body.classList.toggle('dark');
+  document.querySelector('.ball').classList.toggle('active');
+  if (localStorage.getItem('darkMode') === null) {
+    localStorage.setItem('darkMode', 'true');
+  } else if (localStorage.getItem('darkMode') === 'false') {
+    localStorage.setItem('darkMode', 'true');
+  } else if (localStorage.getItem('darkMode') === 'true') {
+    localStorage.setItem('darkMode', 'false');
+  }
+});
 
-const toggler = document.querySelector(".mode-toggler")
-toggler.addEventListener("change", () => {
-  document.body.classList.toggle("dark")
-  document.querySelector(".ball").classList.toggle("active")
-  if(localStorage.getItem('darkMode') === null){
-    localStorage.setItem('darkMode', 'true')
+document.addEventListener('DOMContentLoaded', () => {
+  if (localStorage.getItem('darkMode') === 'true') {
+    document.body.classList.add('dark');
+    document.querySelector('.ball').classList.add('active');
   }
-  else if(localStorage.getItem('darkMode') === 'false'){
-    localStorage.setItem('darkMode', 'true')
+  if (localStorage.getItem('darkMode') === 'false') {
+    document.body.classList.remove('dark');
+    document.querySelector('.ball').classList.remove('active');
   }
-  else if(localStorage.getItem('darkMode') === 'true'){
-    localStorage.setItem('darkMode', 'false')
-  }
-})
+});
 
+const draggables = document.querySelectorAll('.draggable');
+const taskContainer = document.querySelector('.tasks');
+draggables.forEach((draggable) => {
+  draggable.addEventListener('dragstart', () => {
+    draggable.classList.add('dragging');
+  });
+  draggable.addEventListener('dragend', () => {
+    draggable.classList.remove('dragging');
+  });
+});
 
-document.addEventListener('DOMContentLoaded', ()=>{
-  if(localStorage.getItem('darkMode') === 'true'){
-    document.body.classList.add("dark")
-    document.querySelector(".ball").classList.add("active")
+taskContainer.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  const afterElement = getDragAfterElement(e.clientY);
+  const draggable = document.querySelector('.dragging');
+  if (afterElement == null) {
+    taskContainer.appendChild(draggable);
+  } else {
+    taskContainer.insertBefore(draggable, afterElement);
   }
-  if(localStorage.getItem('darkMode') === 'false'){
-    document.body.classList.remove("dark")
-    document.querySelector(".ball").classList.remove("active")
-  }
-})
+});
+
+function getDragAfterElement(y) {
+  const draggableElements = [...taskContainer.querySelectorAll('.draggable:not(.dragging)')];
+
+  return draggableElements.reduce((closest, child) => {
+    const box = child.getBoundingClientRect();
+    const offset = y - box.top - box.height / 2;
+    if (offset < 0 && offset > closest.offset) {
+      return { offset, element: child };
+    }
+    return closest;
+  }, { offset: Number.NEGATIVE_INFINITY }).element;
+}
