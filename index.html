@@ -1,12 +1,47 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wbpack Exercise</title>
-<script defer src="runtime.bundle.js"></script><script defer src="index.bundle.js"></script></head>
-<body>
-    <h1>I am working!</h1>
-    <h2>I am red</h2>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"
+    />
+    <title>To Do List</title>
+  <script defer src="runtime.bundle.js"></script><script defer src="index.bundle.js"></script></head>
+  <body class="">
+    <main  class="wrapper">
+      <h1 class="heading">TO DO</h1>
+      <form class="field-input-to-do">
+        <input type="text" class="input-to-do" placeholder="What to do?"/>
+        <button type="submit" class="submit-btn">
+          <i class="bi bi-plus"></i>
+        </button>
+      </form>
+      <ul class="tasks">
+        
+      </ul>
+      <ul class="ul-foot">
+          <li class="tasks-left">
+              <span class="tasks-left-num"></span> tasks remaining 
+          </li>
+          <li>
+            <input type="checkbox" class="mode-toggler" id="checkbox">
+        <label for="checkbox" class="toggler-label">
+            <i class="bi bi-sun-fill"></i>
+            <i class="bi bi-moon"></i>
+            <span class="ball"></span>
+        </label>
+          </li>
+          <li>
+              <a href="#" class="clear-completed">Clear Completed</a>
+            </li>
+        </ul>
+    </main>
+  </body>
 </html>
