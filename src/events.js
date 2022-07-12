@@ -117,17 +117,6 @@ draggables.forEach((draggable) => {
   });
 });
 
-taskContainer.addEventListener('dragover', (e) => {
-  e.preventDefault();
-  const afterElement = getDragAfterElement(e.clientY);
-  const draggable = document.querySelector('.dragging');
-  if (afterElement == null) {
-    taskContainer.appendChild(draggable);
-  } else {
-    taskContainer.insertBefore(draggable, afterElement);
-  }
-});
-
 function getDragAfterElement(y) {
   const draggableElements = [...taskContainer.querySelectorAll('.draggable:not(.dragging)')];
 
@@ -140,3 +129,15 @@ function getDragAfterElement(y) {
     return closest;
   }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
+
+taskContainer.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  const afterElement = getDragAfterElement(e.clientY);
+  const draggable = document.querySelector('.dragging');
+  if (afterElement == null) {
+    taskContainer.appendChild(draggable);
+  } else {
+    taskContainer.insertBefore(draggable, afterElement);
+  }
+});
+

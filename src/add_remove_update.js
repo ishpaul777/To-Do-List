@@ -1,4 +1,5 @@
 /* eslint-disable max-classes-per-file */
+/* eslint-disable no-trailing-spaces */
 // Task class : represents one task
 export class Task {
   constructor(description, completed, index) {
@@ -56,7 +57,7 @@ export class Store {
     const checkbox = el;
     const taskList = document.querySelector('.tasks');
     const tasks = Store.getTasks();
-    const nodes =[...taskList.children];
+    const nodes = [...taskList.children];
     for (let i = 0; i < tasks.length; i += 1) {
       if (
         tasks[i].index === nodes.indexOf(checkbox.parentElement.parentElement)
@@ -93,8 +94,7 @@ export class Store {
   static updateTask(description) {
     const tasks = Store.getTasks();
     const taskList = document.querySelector('.tasks');
-    const nodes =[...taskList.children]; // convert list in array
-    console.log(nodes)
+    const nodes = [...taskList.children]; // convert list in array
     for (let i = 0; i < tasks.length; i += 1) {
       // iterate over tasks to find completed tasks
       if (
