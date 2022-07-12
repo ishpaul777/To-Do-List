@@ -56,7 +56,8 @@ export class Store {
     const checkbox = el;
     const taskList = document.querySelector('.tasks');
     const tasks = Store.getTasks();
-    const nodes = Array.prototype.slice.call(taskList.children);
+    const nodes =Array.prototype.slice.call(taskList.children);;
+    console.log(nodes)
     for (let i = 0; i < tasks.length; i += 1) {
       if (
         tasks[i].index === nodes.indexOf(checkbox.parentElement.parentElement)
@@ -93,7 +94,8 @@ export class Store {
   static updateTask(description) {
     const tasks = Store.getTasks();
     const taskList = document.querySelector('.tasks');
-    const nodes = Array.prototype.slice.call(taskList.children); // convert list in array
+    const nodes =Array.prototype.slice.call(taskList.children);; // convert list in array
+    console.log(nodes)
     for (let i = 0; i < tasks.length; i += 1) {
       // iterate over tasks to find completed tasks
       if (
@@ -215,7 +217,7 @@ export class UI {
         Store.updateTask(description);
       }
     });
-
+    
     updateBtn.addEventListener('click', () => {
       description.setAttribute('contentEditable', 'false');
       description.parentElement.parentElement.classList.remove('active');
@@ -223,6 +225,7 @@ export class UI {
       editBtn.style.display = 'block';
       // to display update btn
       updateBtn.style.display = 'none';
+      Store.updateTask(description);
     });
   }
 }
