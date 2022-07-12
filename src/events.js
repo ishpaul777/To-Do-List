@@ -140,4 +140,3 @@ taskContainer.addEventListener('dragover', (e) => {
     taskContainer.insertBefore(draggable, afterElement);
   }
 });
-
