@@ -1,16 +1,13 @@
+
 :root {
   --VeryLightGray: hsl(0, 0%, 98%);
   --VeryLightGrayishBlue: hsl(236, 33%, 92%);
-  --LightGrayishBlue: hsl(233, 11%, 84%);
-  --DarkGrayishBlue: hsl(236, 9%, 61%);
-  --VeryDarkGrayishBlue: hsl(235, 19%, 35%);
-  /*Dark mode*/
+
+  /* Dark mode */
   --VeryDarkBlue: hsl(235, 21%, 11%);
   --VeryDarkDesaturatedBlue: hsl(235, 24%, 19%);
-  --LightGrayishBlue: hsl(234, 39%, 85%);
   --LightGrayishBlue: hsl(236, 33%, 92%);
   --DarkGrayishBlue: hsl(234, 11%, 52%);
-  --VeryDarkGrayishBlue: hsl(233, 14%, 35%);
   --VeryDarkGrayishBlue: hsl(237, 14%, 26%);
 }
 
@@ -29,9 +26,9 @@ body {
 }
 
 body.dark {
-    background: var(--VeryDarkBlue) url(./assets/bg-mobile-dark.jpg);
-    background-repeat: no-repeat;
-    background-size: 100vw 36vh;
+  background: var(--VeryDarkBlue) url(./assets/bg-mobile-dark.jpg);
+  background-repeat: no-repeat;
+  background-size: 100vw 36vh;
 }
 
 main {
@@ -47,12 +44,13 @@ main {
 
 .alert.invalid,
 .bi-x-circle {
-    color: red;
+  color: red;
   font-size: 18px;
 }
 
 .alert.success {
-  background: url("assets/icon-check.svg"),
+  background:
+    url("assets/icon-check.svg"),
     linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   color: white;
   border-radius: 50%;
@@ -74,7 +72,7 @@ main {
 }
 
 body.dark .field-input-to-do {
-    background: var(--VeryDarkDesaturatedBlue);
+  background: var(--VeryDarkDesaturatedBlue);
 }
 
 .input-to-do {
@@ -90,14 +88,15 @@ body.dark .input-to-do {
   background: var(--VeryDarkDesaturatedBlue);
   color: var(--LightGrayishBlue);
 }
+
 body.dark .input-to-do::placeholder {
   color: var(--DarkGrayishBlue);
 }
 
 .submit-btn {
-    width: 5%;
-    padding-right: 10px;
-    border: 0;
+  width: 5%;
+  padding-right: 10px;
+  border: 0;
   background: var(--VeryLightGray);
   cursor: pointer;
   font-size: 22px;
@@ -108,24 +107,20 @@ body.dark .submit-btn {
 }
 
 body.dark .submit-btn .bi {
-    color: var(--DarkGrayishBlue);
+  color: var(--DarkGrayishBlue);
 }
 
 .tasks {
-    list-style: none;
-    border-radius: 5px 5px 0 0;
-    background: var(--VeryLightGray);
-     -webkit-box-shadow: 7px 21px 47px -28px var(--VeryDarkGrayishBlue);
-     -moz-box-shadow: 7px 21px 47px -28px var(--VeryDarkGrayishBlue);
-     box-shadow: 7px 21px 47px -28px var(--VeryDarkGrayishBlue);
+  list-style: none;
+  border-radius: 5px 5px 0 0;
+  background: var(--VeryLightGray);
+  -webkit-box-shadow: 7px 21px 47px -28px var(--VeryDarkGrayishBlue);
+  -moz-box-shadow: 7px 21px 47px -28px var(--VeryDarkGrayishBlue);
+  box-shadow: 7px 21px 47px -28px var(--VeryDarkGrayishBlue);
 }
 
 body.dark .tasks {
-    background: var(--VeryDarkDesaturatedBlue);
-}
-
-body.dark .task {
-    background: var(--VeryDarkDesaturatedBlue);
+  background: var(--VeryDarkDesaturatedBlue);
 }
 
 .task {
@@ -136,12 +131,16 @@ body.dark .task {
   align-items: center;
   justify-content: space-between;
 }
+
 body.dark .task {
-    border-bottom: 1px solid var(--VeryDarkGrayishBlue);
+  background: var(--VeryDarkDesaturatedBlue);
+  border-bottom: 1px solid var(--VeryDarkGrayishBlue);
 }
+
 .draggable.dragging {
-  opacity: .5;
+  opacity: 0.5;
 }
+
 .task.active {
   border: 2px solid rgb(103, 103, 103);
   border-radius: 3px;
@@ -152,8 +151,8 @@ body.dark .task.active {
 }
 
 .task-field {
-    font-size: 18px;
-    display: flex;
+  font-size: 18px;
+  display: flex;
   gap: 15px;
   padding: 5px;
 }
@@ -168,16 +167,17 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
-body.dark input[type="checkbox"] {
-    border: 1px solid var(--VeryLightGrayishBlue);
+input[type="checkbox"]:checked {
+  background:
+    url("assets/icon-check.svg"),
+    linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
 }
 
-input[type="checkbox"]:checked {
-    background: url("assets/icon-check.svg"),
-    linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-    background-repeat: no-repeat;
-    background-position: center;
-    border: none;
+body.dark input[type="checkbox"] {
+  border: 1px solid var(--VeryLightGrayishBlue);
 }
 
 input[type="checkbox"]:checked ~ label {
@@ -196,13 +196,22 @@ body.dark input[type="checkbox"]:checked ~ label {
 }
 
 body.dark .task-description {
-    color: var(--VeryLightGrayishBlue);
+  color: var(--VeryLightGrayishBlue);
 }
 
 .user-interaction {
-    display: flex;
+  display: flex;
   gap: 10px;
   align-items: center;
+}
+
+.update-btn {
+  font-size: 22px;
+  display: none;
+}
+
+.remove-btn {
+  font-size: 22px;
 }
 
 .update-btn,
@@ -217,29 +226,18 @@ body.dark .remove-btn {
   color: var(--VeryLightGrayishBlue);
 }
 
-.update-btn {
-  font-size: 22px;
-  display: none;
-}
-
-.remove-btn {
-  font-size: 22px;
-}
-
 .ul-foot {
   list-style: none;
-    font-size: 15px;
-    width: 100%;
-    background: var(--VeryLightGray);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    border-radius: 0 0 8px 8px;
-    font-size: 13px;
+  width: 100%;
+  background: var(--VeryLightGray);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-radius: 0 0 8px 8px;
+  font-size: 13px;
 }
 
-  
 body.dark .ul-foot {
   background: var(--VeryDarkDesaturatedBlue);
 }
@@ -248,22 +246,24 @@ body.dark .ul-foot {
   text-decoration: none;
 }
 
+.ul-foot a:hover {
+  color: #000;
+}
+
 body.dark .ul-foot a {
   color: var(--DarkGrayishBlue);
   text-decoration: none;
-}
-
-.ul-foot a:hover {
-  color: #000;
 }
 
 body.dark .ul-foot a:hover {
   color: var(--VeryLightGrayishBlue);
   text-decoration: none;
 }
-.tasks-left, .tasks-left-num {
+
+.tasks-left,
+.tasks-left-num {
   font-size: 13px;
-  color: var(--DarkGrayishBlue)
+  color: var(--DarkGrayishBlue);
 }
 
 .task-sorting {
@@ -271,74 +271,74 @@ body.dark .ul-foot a:hover {
   list-style: none;
   gap: 10px;
 }
-.task-sorting li{
+
+.task-sorting li {
   color: var(--DarkGrayishBlue);
   font-size: 13px;
   cursor: pointer;
 }
-.task-sorting li.active{
+
+.task-sorting li.active {
   color: hsl(220, 98%, 61%);
 }
 
 @media (min-width: 768px) {
-    body {
-      background: var(--VeryLightGrayishBlue) url(./assets/bg-desktop-light.jpg);
-      background-repeat: no-repeat;
-      background-size: 100vw 36vh;
-    }
+  body {
+    background: var(--VeryLightGrayishBlue) url(./assets/bg-desktop-light.jpg);
+    background-repeat: no-repeat;
+    background-size: 100vw 36vh;
+  }
 
-    body.dark {
-        background: var(--VeryDarkBlue) url(./assets/bg-desktop-dark.jpg);
-        background-repeat: no-repeat;
-      background-size: 100vw 36vh;
-    }
-    
+  body.dark {
+    background: var(--VeryDarkBlue) url(./assets/bg-desktop-dark.jpg);
+    background-repeat: no-repeat;
+    background-size: 100vw 36vh;
+  }
+
   main {
     width: 30vw;
   }
 
   .task-description {
-      max-width: 15vw;
+    max-width: 15vw;
   }
 }
 
-
 .mode-toggler {
-    opacity: 0;
-    position: absolute;
-  }
-  
-  .toggler-label {
-    background: linear-gradient(to left, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-    width: 60px;
-    height: 32px;
-    border-radius: 50px;
-    position: relative;
-    padding: 5px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-  }
-  
-  .bi-sun-fill,.bi-moon{
-    color: #fff;
-  }
-  
-  .toggler-label .ball {
-    background-color: #fff;
-    border: 1px solid linear-gradient(to left, hsl(192, 100%, 67%), hsl(280, 87%, 65%));  
-    width: 32px;
-    height: 32px;
-    position: absolute;
-    left: 0px;
-    right: 32px;
-    border-radius: 50%;
-    transition: transform 0.3s linear;
-  }
+  opacity: 0;
+  position: absolute;
+}
 
+.toggler-label {
+  background: linear-gradient(to left, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  width: 60px;
+  height: 32px;
+  border-radius: 50px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
 
-  .ball.active {
-    transform: translateX(32px);
-  }
+.bi-sun-fill,
+.bi-moon {
+  color: #fff;
+}
+
+.toggler-label .ball {
+  background-color: #fff;
+  border: 1px solid linear-gradient(to left, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 0;
+  right: 32px;
+  border-radius: 50%;
+  transition: transform 0.3s linear;
+}
+
+.ball.active {
+  transform: translateX(32px);
+}
