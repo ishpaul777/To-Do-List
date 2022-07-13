@@ -34,7 +34,7 @@ describe('Add a new task', () => {
   });
 });
 
-//  testing the removing function 
+//  testing the removing function
 describe(('delete a task'), () => {
   test(('Removing a task from storage'), () => {
     const tasks = Store.getTasks();
