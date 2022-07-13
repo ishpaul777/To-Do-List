@@ -1,9 +1,6 @@
 import { Task, Store, UI } from '../add_remove_update.js';
 
-// delete window.location;
-// window.location = {
-//     reload: jest.fn()
-// }
+
 // ? testing the adding function
 describe('Add a new task', () => {
   test(('Adding First Task to storage'), () => {
