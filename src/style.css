@@ -118,7 +118,7 @@ body.dark .submit-btn .bi {
   box-shadow: 7px 21px 47px -28px var(--VeryDarkGrayishBlue);
 }
 
-body.dark .task {
+body.dark .tasks {
   background: var(--VeryDarkDesaturatedBlue);
 }
 
@@ -132,7 +132,12 @@ body.dark .task {
 }
 
 body.dark .task {
+  background: var(--VeryDarkDesaturatedBlue);
   border-bottom: 1px solid var(--VeryDarkGrayishBlue);
+}
+
+.draggable.dragging {
+  opacity: 0.5;
 }
 
 .task.active {
@@ -161,10 +166,6 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
-body.dark input[type="checkbox"] {
-  border: 1px solid var(--VeryLightGrayishBlue);
-}
-
 input[type="checkbox"]:checked {
   background:
     url("assets/icon-check.svg"),
@@ -172,6 +173,10 @@ input[type="checkbox"]:checked {
   background-repeat: no-repeat;
   background-position: center;
   border: none;
+}
+
+body.dark input[type="checkbox"] {
+  border: 1px solid var(--VeryLightGrayishBlue);
 }
 
 input[type="checkbox"]:checked ~ label {
@@ -199,6 +204,15 @@ body.dark .task-description {
   align-items: center;
 }
 
+.update-btn {
+  font-size: 22px;
+  display: none;
+}
+
+.remove-btn {
+  font-size: 22px;
+}
+
 .update-btn,
 .edit-btn,
 .remove-btn {
@@ -211,18 +225,8 @@ body.dark .remove-btn {
   color: var(--VeryLightGrayishBlue);
 }
 
-.update-btn {
-  font-size: 22px;
-  display: none;
-}
-
-.remove-btn {
-  font-size: 22px;
-}
-
 .ul-foot {
   list-style: none;
-  font-size: 15px;
   width: 100%;
   background: var(--VeryLightGray);
   display: flex;
@@ -233,7 +237,6 @@ body.dark .remove-btn {
   font-size: 13px;
 }
 
-
 body.dark .ul-foot {
   background: var(--VeryDarkDesaturatedBlue);
 }
@@ -242,13 +245,13 @@ body.dark .ul-foot {
   text-decoration: none;
 }
 
+.ul-foot a:hover {
+  color: #000;
+}
+
 body.dark .ul-foot a {
   color: var(--DarkGrayishBlue);
   text-decoration: none;
-}
-
-.ul-foot a:hover {
-  color: #000;
 }
 
 body.dark .ul-foot a:hover {
@@ -311,7 +314,6 @@ body.dark .ul-foot a:hover {
   height: 32px;
   border-radius: 50px;
   position: relative;
-  padding: 5px;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
