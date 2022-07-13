@@ -34,5 +34,30 @@ describe('Add a new task', () => {
   });
 });
 
-// ? testing the removing function 
-//ADD YOUR CODE HERE
+//  testing the removing function 
+describe(('delete a task'), () => {
+  test(('Removing a task from storage'), () => {
+    const tasks = Store.getTasks();
+    Store.removeTask('firstTask');
+    expect(tasks).toHaveLength(0);
+  });
+  test(('remove from UI'), () => {
+    document.body.innerHTML = `<ul>
+        </li class="task">
+        <div class="task-field">
+            <input type="checkbox" class="task-checkbox" />
+            <label class="task-description">First Tasks</label>
+        </div>
+        <div class="user-interaction">
+        <i class="bi bi-pencil edit-btn"></i>
+        <i class="bi bi-check2 update-btn"></i>
+        <i class="bi bi-x remove-btn remove"></i>
+        <div>
+        </li>
+        </ul>`;
+    const removeBtn = document.querySelector('.remove-btn');
+    UI.removeTask(removeBtn);
+    const list = document.querySelectorAll('.task');
+    expect(list).toHaveLength(0);
+  });
+});
