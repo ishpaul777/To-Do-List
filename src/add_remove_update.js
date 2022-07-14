@@ -32,21 +32,21 @@ export class Store {
 
   // remove a task from store
   static removeTask(description) {
-      const tasks = Store.getTasks();
-      let spliced;
-      tasks.forEach((task, index) => {
-        if (task.description === description) {
-          spliced = tasks.splice(index, 1);
-        }
-      });
-      localStorage.setItem('tasks', JSON.stringify(tasks));
-      for (let i = 0; i < tasks.length; i += 1) {
-        if (tasks[i].index >= spliced[0].index) {
-          tasks[i].index -= 1;
-        }
+    const tasks = Store.getTasks();
+    let spliced;
+    tasks.forEach((task, index) => {
+      if (task.description === description) {
+        spliced = tasks.splice(index, 1);
       }
-      localStorage.setItem('tasks', JSON.stringify(tasks));
-      // document.querySelector('.tasks-left-num').textContent = tasks.length;
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    for (let i = 0; i < tasks.length; i += 1) {
+      if (tasks[i].index >= spliced[0].index) {
+        tasks[i].index -= 1;
+      }
+    }
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    // document.querySelector('.tasks-left-num').textContent = tasks.length;
   }
 
   // update status when user checks the checkbox
