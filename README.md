@@ -3,6 +3,7 @@
 # To Do App
 
 > To-Do List project is the application for a to-do list, users can add and remove tasks from the to-do list. Mark tasks as completed. Users can delete all completed tasks at once.
+> UI is taken from [Frontend Mentor](https://www.frontendmentor.io/). [Frontend Mentor](https://www.frontendmentor.io/) challenges help you improve your coding skills by building realistic projects. 
 
 
 ## Built With
@@ -47,7 +48,8 @@ Contributions, issues, and feature requests are welcome!
 Give a ⭐️ if you like this project!
 
 ## Acknowledgment
-The project idea is originally Microverse Javascript Curriculum.
+- The project idea is originally Microverse Javascript Curriculum.
+- UI is taken from [Frontend Mentor](https://www.frontendmentor.io/). [Frontend Mentor](https://www.frontendmentor.io/) challenges help you improve your coding skills by building realistic projects. 
 
 ## 📝 License
 
