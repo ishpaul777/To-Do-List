@@ -105,15 +105,46 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.ball').classList.remove('active');
   }
 });
+//Draggging and dropping tasks
+const draggables = document.querySelectorAll('.draggable');//select all tasks in UI <li> element
 
-const draggables = document.querySelectorAll('.draggable');
-const taskContainer = document.querySelector('.tasks');
+const taskContainer = document.querySelector('.tasks');//Select the <ul> el
 draggables.forEach((draggable) => {
-  draggable.addEventListener('dragstart', () => {
-    draggable.classList.add('dragging');
+  let draggedElement; //element to be dragged
+  let draggedTask; //task in storge that to be dragged
+  let tasks = Store.getTasks()//get the tasks from local storage
+  let taskList = [...draggables] //convert task <li> elements in array
+  draggable.addEventListener('dragstart', () => {//dragging start
+    draggable.classList.add('dragging');//add a class dragging to element
+    for(let i = 0;i<tasks.length;i++){//loop through task
+      if(taskList.indexOf(draggable) === tasks[i].index){//index of draggable el. = task index(every task in local storage has a index property) 
+        draggedTask  = tasks.splice(i,1);//tasks will be spliced from tasks in local storage 
+        draggedElement = taskList.splice(i,1);//taslist will be spliced
+      }
+    }
+    for (let i = 0; i < tasks.length; i += 1) {
+      tasks[i].index = i;
+    }//all the tasks in storage will assign a new index as one el. is removed
+    localStorage.setItem('tasks', JSON.stringify(tasks)); // update storage 
   });
-  draggable.addEventListener('dragend', () => {
-    draggable.classList.remove('dragging');
+  draggable.addEventListener('dragend', (e) => {//dragging end
+    let droppedIndex;//for getting the index
+    let afterElement = getDragAfterElement(e.clientY)//this function get the el. after where it is dropped 
+    droppedIndex = taskList.indexOf(afterElement)//get the el. index
+    if(afterElement === undefined){//if element is droppen at last of list
+      draggedTask[0].index = tasks.length//index of task will be last index 
+      tasks.push(draggedTask[0])//push the task
+      taskList.push(draggedElement[0])//push the to taskList 
+      localStorage.setItem('tasks', JSON.stringify(tasks)); // update storage//Working fine till here 
+    }else{//if there is a afterEl.
+      tasks.splice(droppedIndex,0,draggedTask[0])//enter in between storage
+      taskList.splice(droppedIndex,0,draggedElement[0])//enter in between taskList
+      for (let i = 0; i < tasks.length; i += 1) {//reindex all task in storage
+        tasks[i].index = i;
+      }
+      localStorage.setItem('tasks', JSON.stringify(tasks)); // update storage
+    }
+    draggable.classList.remove('dragging');//remove the class draggging
   });
 });
 
@@ -140,3 +171,5 @@ taskContainer.addEventListener('dragover', (e) => {
     taskContainer.insertBefore(draggable, afterElement);
   }
 });
+
+
