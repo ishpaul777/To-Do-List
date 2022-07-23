@@ -1,4 +1,5 @@
 /* eslint-disable max-classes-per-file */
+/* eslint-disable no-trailing-spaces */
 // Task class : represents one task
 export class Task {
   constructor(description, completed, index) {
@@ -32,7 +33,7 @@ export class Store {
 
   // remove a task from store
   static removeTask(el, description) {
-    if (el.classList.contains('remove')) {
+    if (el.classList.contains('remove') || el.classList.contains('dragging')) {
       const tasks = Store.getTasks();
       let spliced;
       tasks.forEach((task, index) => {
@@ -48,6 +49,7 @@ export class Store {
       }
       localStorage.setItem('tasks', JSON.stringify(tasks));
       document.querySelector('.tasks-left-num').textContent = tasks.length;
+      return spliced
     }
   }
 
@@ -56,7 +58,7 @@ export class Store {
     const checkbox = el;
     const taskList = document.querySelector('.tasks');
     const tasks = Store.getTasks();
-    const nodes = Array.prototype.slice.call(taskList.children);
+    const nodes = [...taskList.children];
     for (let i = 0; i < tasks.length; i += 1) {
       if (
         tasks[i].index === nodes.indexOf(checkbox.parentElement.parentElement)
@@ -93,7 +95,7 @@ export class Store {
   static updateTask(description) {
     const tasks = Store.getTasks();
     const taskList = document.querySelector('.tasks');
-    const nodes = Array.prototype.slice.call(taskList.children); // convert list in array
+    const nodes = [...taskList.children]; // convert list in array
     for (let i = 0; i < tasks.length; i += 1) {
       // iterate over tasks to find completed tasks
       if (
@@ -120,9 +122,11 @@ export class UI {
 
   static addTasksToList(task) {
     const list = document.querySelector('.tasks');
-
+    
     const row = document.createElement('li');
     row.classList.add('task');
+    row.classList.add('draggable');
+    row.setAttribute('draggable', 'true');
 
     row.innerHTML = `
         <div class="task-field">
@@ -213,7 +217,7 @@ export class UI {
         Store.updateTask(description);
       }
     });
-
+    
     updateBtn.addEventListener('click', () => {
       description.setAttribute('contentEditable', 'false');
       description.parentElement.parentElement.classList.remove('active');
@@ -221,6 +225,7 @@ export class UI {
       editBtn.style.display = 'block';
       // to display update btn
       updateBtn.style.display = 'none';
+      Store.updateTask(description);
     });
   }
 }
