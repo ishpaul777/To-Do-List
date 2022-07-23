@@ -33,7 +33,7 @@ export class Store {
 
   // remove a task from store
   static removeTask(el, description) {
-    if (el.classList.contains('remove')) {
+    if (el.classList.contains('remove') || el.classList.contains('dragging')) {
       const tasks = Store.getTasks();
       let spliced;
       tasks.forEach((task, index) => {
@@ -49,6 +49,7 @@ export class Store {
       }
       localStorage.setItem('tasks', JSON.stringify(tasks));
       document.querySelector('.tasks-left-num').textContent = tasks.length;
+      return spliced
     }
   }
 
@@ -121,7 +122,7 @@ export class UI {
 
   static addTasksToList(task) {
     const list = document.querySelector('.tasks');
-
+    
     const row = document.createElement('li');
     row.classList.add('task');
     row.classList.add('draggable');
