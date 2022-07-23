@@ -176,7 +176,7 @@ draggable.addEventListener('dragend', (e) => { // dragging end
    localStorage.setItem('tasks', JSON.stringify(tasks)); // update storage//Working fine till here
    taskContainer.innerHTML = '';
    UI.displayTasks()
-   document.location.reload() //!uncomment this everthing works fine
+   //document.location.reload() //!uncomment this everthing works fine
    draggable.classList.remove('dragging');// remove the class draggging
    }
   });
