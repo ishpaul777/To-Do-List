@@ -70,7 +70,11 @@ main {
   border-radius: 5px;
 }
 
-body.dark .field-input-to-do {
+body.dark .field-input-to-do,
+body.dark .input-to-do,
+body.dark .submit-btn,
+body.dark .tasks,
+body.dark .ul-foot {
   background: var(--VeryDarkDesaturatedBlue);
 }
 
@@ -84,7 +88,6 @@ body.dark .field-input-to-do {
 }
 
 body.dark .input-to-do {
-  background: var(--VeryDarkDesaturatedBlue);
   color: var(--LightGrayishBlue);
 }
 
@@ -101,9 +104,6 @@ body.dark .input-to-do::placeholder {
   font-size: 22px;
 }
 
-body.dark .submit-btn {
-  background: var(--VeryDarkDesaturatedBlue);
-}
 
 body.dark .submit-btn .bi {
   color: var(--DarkGrayishBlue);
@@ -118,10 +118,6 @@ body.dark .submit-btn .bi {
   box-shadow: 7px 21px 47px -28px var(--VeryDarkGrayishBlue);
 }
 
-body.dark .tasks {
-  background: var(--VeryDarkDesaturatedBlue);
-}
-
 .task {
   padding: 15px;
   border-bottom: 1px solid rgb(200, 200, 213);
@@ -132,7 +128,6 @@ body.dark .tasks {
 }
 
 body.dark .task {
-  background: var(--VeryDarkDesaturatedBlue);
   border-bottom: 1px solid var(--VeryDarkGrayishBlue);
 }
 
@@ -235,10 +230,6 @@ body.dark .remove-btn {
   padding: 15px;
   border-radius: 0 0 8px 8px;
   font-size: 13px;
-}
-
-body.dark .ul-foot {
-  background: var(--VeryDarkDesaturatedBlue);
 }
 
 .ul-foot a {
