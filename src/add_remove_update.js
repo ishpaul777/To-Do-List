@@ -1,4 +1,3 @@
-/* eslint-disable max-classes-per-file */
 // Task class : represents one task
 export class Task {
   constructor(description, completed, index) {
